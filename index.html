@@ -61,15 +61,9 @@
       color: var(--navy);
       text-align: center;
       letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .calc-card .card-subtitle {
-      text-align: center;
-      font-size: 14px;
-      color: var(--muted);
       margin-bottom: 36px;
     }
+
 
     .section {
       margin-bottom: 28px;
@@ -611,7 +605,7 @@
   <div class="calc-wrap">
     <div class="calc-card">
       <h1>Lebenserwartungsrechner</h1>
-      <p class="card-subtitle">Basierend auf der DAV2004R Sterbetafel der Deutschen Aktuarvereinigung</p>
+
 
       <!-- INPUT -->
       <div id="input-section">
@@ -889,10 +883,9 @@
 
     // ── DONUT ANIMATION ──
     const CIRC = 188.5; // 2 * π * 30
-    function animateDonut(id, value, maxAge) {
+    function animateDonut(id, pct) {
       const arc = document.getElementById(id);
       if (!arc) return;
-      const pct = Math.min(1, Math.max(0, value / maxAge));
       arc.style.strokeDashoffset = CIRC * (1 - pct);
     }
     function resetDonuts() {
@@ -942,9 +935,9 @@
         // Animate donuts
         const maxAge = 110;
         setTimeout(() => {
-          animateDonut('arc-80', r.p80, maxAge);
-          animateDonut('arc-50', r.p50, maxAge);
-          animateDonut('arc-20', r.p20, maxAge);
+          animateDonut('arc-80', 0.80);
+          animateDonut('arc-50', 0.50);
+          animateDonut('arc-20', 0.20);
         }, 80);
       }, 800);
     }
